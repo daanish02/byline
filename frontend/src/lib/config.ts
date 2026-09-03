@@ -12,5 +12,5 @@ export const config = {
   serper: {
     apiKey: requireEnv("SERPER_API_KEY"),
   },
-  lowConfidenceThreshold: Number(process.env["LOW_CONFIDENCE_THRESHOLD"] ?? "5"),
+  lowConfidenceThreshold: Number(process.env["LOW_CONFIDENCE_THRESHOLD"] ?? "10"),
 } as const;
