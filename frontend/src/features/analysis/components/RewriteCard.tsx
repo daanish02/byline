@@ -15,7 +15,7 @@ export function RewriteCard({ rewrite }: Props) {
 
   return (
     <div className="rounded-lg border border-border bg-card flex flex-col">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-border">
         <span className="text-sm font-semibold">Rewritten Pitch</span>
         <button
           onClick={copy}
@@ -24,8 +24,8 @@ export function RewriteCard({ rewrite }: Props) {
           {copied ? "Copied ✓" : "Copy"}
         </button>
       </div>
-      <div className="p-5 flex-1">
-        <div className="max-h-64 overflow-y-auto rounded-lg bg-muted/40 px-4 py-3">
+      <div className="p-6 flex-1">
+        <div className="max-h-96 overflow-y-auto rounded-lg bg-muted/40 px-4 py-4">
           <p className="text-sm leading-relaxed whitespace-pre-wrap">{rewrite}</p>
         </div>
       </div>
