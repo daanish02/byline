@@ -1,0 +1,209 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "feanor",
+  "elements": [
+    {
+      "id": "step1-box",
+      "type": "rectangle",
+      "x": 60, "y": 60, "width": 180, "height": 55,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#e8f4fd",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 1, "version": 1, "versionNonce": 1
+    },
+    {
+      "id": "step1-label",
+      "type": "text",
+      "x": 70, "y": 72, "width": 160, "height": 32,
+      "text": "User enters journalist,\noutlet, and pitch",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 2, "version": 1, "versionNonce": 2
+    },
+    {
+      "id": "arrow1",
+      "type": "arrow",
+      "x": 150, "y": 115, "width": 0, "height": 50,
+      "points": [[0,0],[0,50]],
+      "strokeColor": "#1e1e1e", "strokeWidth": 1,
+      "seed": 3, "version": 1, "versionNonce": 3
+    },
+    {
+      "id": "step2-box",
+      "type": "rectangle",
+      "x": 60, "y": 165, "width": 180, "height": 55,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#f0fdf4",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 4, "version": 1, "versionNonce": 4
+    },
+    {
+      "id": "step2-label",
+      "type": "text",
+      "x": 70, "y": 177, "width": 160, "height": 32,
+      "text": "Web searches for\njournalist's articles",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 5, "version": 1, "versionNonce": 5
+    },
+    {
+      "id": "arrow2",
+      "type": "arrow",
+      "x": 150, "y": 220, "width": 0, "height": 50,
+      "points": [[0,0],[0,50]],
+      "strokeColor": "#1e1e1e", "strokeWidth": 1,
+      "seed": 6, "version": 1, "versionNonce": 6
+    },
+    {
+      "id": "decision-box",
+      "type": "diamond",
+      "x": 80, "y": 270, "width": 140, "height": 70,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#fef9c3",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 7, "version": 1, "versionNonce": 7
+    },
+    {
+      "id": "decision-label",
+      "type": "text",
+      "x": 100, "y": 295, "width": 100, "height": 20,
+      "text": "≥5 articles?",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 8, "version": 1, "versionNonce": 8
+    },
+    {
+      "id": "warning-box",
+      "type": "rectangle",
+      "x": 310, "y": 275, "width": 160, "height": 55,
+      "strokeColor": "#d97706", "backgroundColor": "#fef9c3",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 9, "version": 1, "versionNonce": 9
+    },
+    {
+      "id": "warning-label",
+      "type": "text",
+      "x": 320, "y": 290, "width": 140, "height": 32,
+      "text": "Show low-confidence\nwarning to user",
+      "fontSize": 12, "fontFamily": 1,
+      "seed": 10, "version": 1, "versionNonce": 10
+    },
+    {
+      "id": "arrow-no",
+      "type": "arrow",
+      "x": 220, "y": 305, "width": 90, "height": 0,
+      "points": [[0,0],[90,0]],
+      "strokeColor": "#d97706", "strokeWidth": 1,
+      "seed": 11, "version": 1, "versionNonce": 11
+    },
+    {
+      "id": "no-label",
+      "type": "text",
+      "x": 237, "y": 287, "width": 20, "height": 16,
+      "text": "No",
+      "fontSize": 11, "fontFamily": 1,
+      "seed": 12, "version": 1, "versionNonce": 12
+    },
+    {
+      "id": "arrow-yes",
+      "type": "arrow",
+      "x": 150, "y": 340, "width": 0, "height": 50,
+      "points": [[0,0],[0,50]],
+      "strokeColor": "#1e1e1e", "strokeWidth": 1,
+      "seed": 13, "version": 1, "versionNonce": 13
+    },
+    {
+      "id": "yes-label",
+      "type": "text",
+      "x": 155, "y": 352, "width": 20, "height": 16,
+      "text": "Yes",
+      "fontSize": 11, "fontFamily": 1,
+      "seed": 14, "version": 1, "versionNonce": 14
+    },
+    {
+      "id": "step3-box",
+      "type": "rectangle",
+      "x": 60, "y": 390, "width": 180, "height": 55,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#f0fdf4",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 15, "version": 1, "versionNonce": 15
+    },
+    {
+      "id": "step3-label",
+      "type": "text",
+      "x": 70, "y": 402, "width": 160, "height": 32,
+      "text": "AI builds coverage\nprofile from articles",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 16, "version": 1, "versionNonce": 16
+    },
+    {
+      "id": "arrow3",
+      "type": "arrow",
+      "x": 150, "y": 445, "width": 0, "height": 50,
+      "points": [[0,0],[0,50]],
+      "strokeColor": "#1e1e1e", "strokeWidth": 1,
+      "seed": 17, "version": 1, "versionNonce": 17
+    },
+    {
+      "id": "step4-box",
+      "type": "rectangle",
+      "x": 60, "y": 495, "width": 180, "height": 55,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#f0fdf4",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 18, "version": 1, "versionNonce": 18
+    },
+    {
+      "id": "step4-label",
+      "type": "text",
+      "x": 70, "y": 507, "width": 160, "height": 32,
+      "text": "AI scores pitch fit\n& rewrites pitch",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 19, "version": 1, "versionNonce": 19
+    },
+    {
+      "id": "arrow4",
+      "type": "arrow",
+      "x": 150, "y": 550, "width": 0, "height": 50,
+      "points": [[0,0],[0,50]],
+      "strokeColor": "#1e1e1e", "strokeWidth": 1,
+      "seed": 20, "version": 1, "versionNonce": 20
+    },
+    {
+      "id": "step5-box",
+      "type": "rectangle",
+      "x": 60, "y": 600, "width": 180, "height": 55,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#f0fdf4",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 21, "version": 1, "versionNonce": 21
+    },
+    {
+      "id": "step5-label",
+      "type": "text",
+      "x": 70, "y": 612, "width": 160, "height": 32,
+      "text": "AI writes opening line\nciting real article",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 22, "version": 1, "versionNonce": 22
+    },
+    {
+      "id": "arrow5",
+      "type": "arrow",
+      "x": 150, "y": 655, "width": 0, "height": 50,
+      "points": [[0,0],[0,50]],
+      "strokeColor": "#1e1e1e", "strokeWidth": 1,
+      "seed": 23, "version": 1, "versionNonce": 23
+    },
+    {
+      "id": "step6-box",
+      "type": "rectangle",
+      "x": 60, "y": 705, "width": 180, "height": 55,
+      "strokeColor": "#1e1e1e", "backgroundColor": "#e8f4fd",
+      "fillStyle": "solid", "strokeWidth": 1, "roughness": 1,
+      "seed": 24, "version": 1, "versionNonce": 24
+    },
+    {
+      "id": "step6-label",
+      "type": "text",
+      "x": 70, "y": 717, "width": 160, "height": 32,
+      "text": "User sees 4 results\n(≤30 seconds total)",
+      "fontSize": 13, "fontFamily": 1,
+      "seed": 25, "version": 1, "versionNonce": 25
+    }
+  ],
+  "appState": { "viewBackgroundColor": "#ffffff" },
+  "files": {}
+}
