@@ -28,42 +28,26 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-6 py-16 flex flex-col gap-10">
+      <div className="max-w-2xl mx-auto px-8 py-20 flex flex-col gap-12">
 
         {/* Header */}
-        <header className="flex flex-col gap-3">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-600/20 border border-indigo-500/30 text-indigo-400 text-sm">✦</span>
-            <h1 className="text-4xl font-black tracking-tight bg-gradient-to-r from-white via-white to-indigo-300 bg-clip-text text-transparent">
-              Byline
-            </h1>
-          </div>
-          <p className="text-sm text-muted-foreground max-w-sm">
-            Research any journalist in seconds. Get a personalised pitch score, rewrite, and opening line — powered by their actual coverage.
-          </p>
+        <header className="flex flex-col gap-2 border-b border-white/10 pb-8">
+          <h1 className="text-2xl font-bold tracking-tight text-white">Byline</h1>
+          <p className="text-sm text-muted-foreground">Know your journalist before you pitch.</p>
         </header>
 
         {/* Form */}
-        <div className="rounded-xl border border-white/10 bg-white/[0.04] shadow-xl shadow-black/30 p-6 backdrop-blur-sm">
-          <AnalysisForm onResult={handleResult} onError={handleError} />
-        </div>
+        <AnalysisForm onResult={handleResult} onError={handleError} />
 
         {/* Error */}
         {state.status === "error" && <ErrorBanner message={state.message} />}
 
         {/* Results */}
         {state.status === "results" && (
-          <div className="flex flex-col gap-5">
-            <div className="flex items-center gap-3">
-              <div className="flex-1 border-t border-white/10" />
-              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Analysis</span>
-              <div className="flex-1 border-t border-white/10" />
-            </div>
-
+          <div className="flex flex-col gap-8">
             {state.data.lowConfidence && (
               <LowConfidenceWarning articleCount={state.data.articleCount} />
             )}
-
             <div className="grid grid-cols-2 gap-4">
               <CoverageCard profile={state.data.profile} />
               <ScoreCard score={state.data.score} scoreReasoning={state.data.scoreReasoning} />

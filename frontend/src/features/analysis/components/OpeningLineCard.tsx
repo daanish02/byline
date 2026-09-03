@@ -15,8 +15,8 @@ export function OpeningLineCard({ openingLine }: Props) {
   }
 
   return (
-    <div className="rounded-xl border border-white/10 bg-white/[0.04] shadow-lg shadow-black/20 flex flex-col">
-      <div className="flex items-center justify-between px-5 py-4 border-b">
+    <div className="rounded-lg border border-white/10 bg-white/[0.03] flex flex-col">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
         <span className="text-sm font-semibold">Opening Line</span>
         {openingLine && (
           <button
