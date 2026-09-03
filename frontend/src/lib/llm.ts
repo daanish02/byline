@@ -47,39 +47,39 @@ function articleSummary(articles: Article[]): string {
 export async function runAnalysis(articles: Article[], pitch: string): Promise<LLMResult> {
   const articleList = articleSummary(articles);
 
-  // 1. Coverage profile
-  const profile = await chat(
-    "You are a media analyst. Given a list of articles by a journalist, write a concise 2-3 sentence coverage profile describing their beat, recurring angles, and what they care most about. Be specific, not generic.",
+  // Batch 1 — profile and opening line are independent: run in parallel
+  const [profile, openingLine] = await Promise.all([
+    chat(
+      "You are a media analyst. Given a list of articles by a journalist, write a concise 2-3 sentence coverage profile describing their beat, recurring angles, and what they care most about. Be specific, not generic.",
+      articles.length > 0
+        ? `Articles:\n${articleList}`
+        : "No articles were found for this journalist. Write a brief note that their coverage could not be profiled due to insufficient data."
+    ),
+    // Opening line only when articles exist (hallucination guard)
     articles.length > 0
-      ? `Articles:\n${articleList}`
-      : "No articles were found for this journalist. Write a brief note that their coverage could not be profiled due to insufficient data."
-  );
+      ? chat(
+          "You are a PR writer. Write one opening sentence for an email to this journalist. It must reference a specific article from the list provided — cite the title naturally. Return only the sentence, no preamble.",
+          `Recent articles by this journalist:\n${articleList}`
+        )
+      : Promise.resolve(null),
+  ]);
 
-  // 2. Fit score + reasoning
-  const scoreResponse = await chat(
-    `You are a PR strategist. Rate how well a pitch fits a journalist's coverage on a scale of 0-100. Reply with exactly this format:\nSCORE: <number>\nREASONING: <1-2 sentences explaining the score, referencing specific angles>`,
-    `Journalist profile:\n${profile}\n\nPitch:\n${pitch}`
-  );
+  // Batch 2 — score and rewrite both need profile: run in parallel after batch 1
+  const [scoreResponse, rewrite] = await Promise.all([
+    chat(
+      `You are a PR strategist. Rate how well a pitch fits a journalist's coverage on a scale of 0-100. Reply with exactly this format:\nSCORE: <number>\nREASONING: <1-2 sentences explaining the score, referencing specific angles>`,
+      `Journalist profile:\n${profile}\n\nPitch:\n${pitch}`
+    ),
+    chat(
+      "You are a PR writer. Rewrite the pitch to match the journalist's specific beat and angle. Keep the core story but shift the framing to speak their language. Return only the rewritten pitch, no preamble.",
+      `Journalist profile:\n${profile}\n\nOriginal pitch:\n${pitch}`
+    ),
+  ]);
 
   const scoreMatch = scoreResponse.match(/SCORE:\s*(\d+)/i);
   const reasoningMatch = scoreResponse.match(/REASONING:\s*([\s\S]+)/i);
   const score = Math.min(100, Math.max(0, Number(scoreMatch?.[1] ?? "50")));
   const scoreReasoning = reasoningMatch?.[1]?.trim() ?? scoreResponse.trim();
-
-  // 3. Pitch rewrite
-  const rewrite = await chat(
-    "You are a PR writer. Rewrite the pitch to match the journalist's specific beat and angle. Keep the core story but shift the framing to speak their language. Return only the rewritten pitch, no preamble.",
-    `Journalist profile:\n${profile}\n\nOriginal pitch:\n${pitch}`
-  );
-
-  // 4. Opening line — only when articles exist (hallucination guard)
-  let openingLine: string | null = null;
-  if (articles.length > 0) {
-    openingLine = await chat(
-      "You are a PR writer. Write one opening sentence for an email to this journalist. It must reference a specific article from the list provided — cite the title naturally. Return only the sentence, no preamble.",
-      `Recent articles by this journalist:\n${articleList}`
-    );
-  }
 
   return { profile, score, scoreReasoning, rewrite, openingLine };
 }
