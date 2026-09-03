@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Props = { rewrite: string };
 
@@ -15,23 +14,21 @@ export function RewriteCard({ rewrite }: Props) {
   }
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="flex-row items-center justify-between pb-2">
-        <CardTitle className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Rewritten Pitch
-        </CardTitle>
+    <div className="rounded-xl border bg-card shadow-sm flex flex-col">
+      <div className="flex items-center justify-between px-5 py-4 border-b">
+        <span className="text-sm font-semibold">Rewritten Pitch</span>
         <button
           onClick={copy}
-          className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+          className="text-xs border border-input rounded-md px-2.5 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
         >
-          {copied ? "Copied" : "Copy"}
+          {copied ? "Copied ✓" : "Copy"}
         </button>
-      </CardHeader>
-      <CardContent>
-        <div className="max-h-64 overflow-y-auto rounded bg-muted/40 px-3 py-2.5">
+      </div>
+      <div className="p-5 flex-1">
+        <div className="max-h-64 overflow-y-auto rounded-lg bg-muted/40 px-4 py-3">
           <p className="text-sm leading-relaxed whitespace-pre-wrap">{rewrite}</p>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
