@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import type { AnalyzeResponse } from "@/features/analysis/schema";
 
 type Props = {
   onResult: (result: AnalyzeResponse) => void;
   onError: (message: string) => void;
 };
+
+const inputCls =
+  "h-10 w-full rounded-lg border border-white/15 bg-white/5 px-3 py-1 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500/60 focus-visible:border-indigo-500/40 disabled:opacity-50 transition-colors";
 
 export function AnalysisForm({ onResult, onError }: Props) {
   const [journalist, setJournalist] = useState("");
@@ -46,8 +48,8 @@ export function AnalysisForm({ onResult, onError }: Props) {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
       <div className="grid grid-cols-2 gap-4">
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="journalist" className="text-sm font-medium">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="journalist" className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
             Journalist name
           </label>
           <input
@@ -58,11 +60,11 @@ export function AnalysisForm({ onResult, onError }: Props) {
             disabled={isLoading}
             required
             placeholder="e.g. Jane Smith"
-            className="h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:opacity-50"
+            className={inputCls}
           />
         </div>
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="outlet" className="text-sm font-medium">
+        <div className="flex flex-col gap-2">
+          <label htmlFor="outlet" className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
             Outlet
           </label>
           <input
@@ -73,13 +75,13 @@ export function AnalysisForm({ onResult, onError }: Props) {
             disabled={isLoading}
             required
             placeholder="e.g. The Guardian"
-            className="h-9 rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:opacity-50"
+            className={inputCls}
           />
         </div>
       </div>
 
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="pitch" className="text-sm font-medium">
+      <div className="flex flex-col gap-2">
+        <label htmlFor="pitch" className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
           Your pitch
         </label>
         <textarea
@@ -90,24 +92,28 @@ export function AnalysisForm({ onResult, onError }: Props) {
           required
           rows={6}
           placeholder="Paste your pitch here…"
-          className="rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-xs placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring resize-y disabled:opacity-50"
+          className="w-full rounded-lg border border-white/15 bg-white/5 px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-500/60 focus-visible:border-indigo-500/40 resize-y disabled:opacity-50 transition-colors"
         />
       </div>
 
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between pt-1">
         {isLoading && (
           <p className="text-sm text-muted-foreground animate-pulse">Researching journalist…</p>
         )}
-        <Button type="submit" disabled={!canSubmit} className="ml-auto">
+        <button
+          type="submit"
+          disabled={!canSubmit}
+          className="ml-auto inline-flex items-center gap-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed px-5 py-2.5 text-sm font-semibold text-white transition-colors"
+        >
           {isLoading ? (
-            <span className="flex items-center gap-2">
-              <span className="h-3.5 w-3.5 border-2 border-primary-foreground border-t-transparent rounded-full animate-spin" />
+            <>
+              <span className="h-3.5 w-3.5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
               Analyzing
-            </span>
+            </>
           ) : (
             "Analyze →"
           )}
-        </Button>
+        </button>
       </div>
     </form>
   );
