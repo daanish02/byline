@@ -9,7 +9,7 @@ type Props = {
 };
 
 const inputCls =
-  "h-10 w-full rounded-md border border-white/12 bg-white/[0.04] px-3 text-sm text-foreground placeholder:text-white/25 focus-visible:outline-none focus-visible:border-white/30 focus-visible:bg-white/[0.06] disabled:opacity-40 transition-all";
+  "h-10 w-full rounded-md border border-input bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring disabled:opacity-40 transition-all";
 
 export function AnalysisForm({ onResult, onError }: Props) {
   const [journalist, setJournalist] = useState("");
@@ -45,17 +45,17 @@ export function AnalysisForm({ onResult, onError }: Props) {
     <form onSubmit={handleSubmit} className="flex flex-col gap-6">
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="journalist" className="text-xs text-white/40 tracking-widest uppercase">Journalist</label>
+          <label htmlFor="journalist" className="text-xs text-muted-foreground tracking-widest uppercase">Journalist</label>
           <input id="journalist" type="text" value={journalist} onChange={(e) => setJournalist(e.target.value)} disabled={isLoading} required placeholder="Jane Smith" className={inputCls} />
         </div>
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="outlet" className="text-xs text-white/40 tracking-widest uppercase">Outlet</label>
+          <label htmlFor="outlet" className="text-xs text-muted-foreground tracking-widest uppercase">Outlet</label>
           <input id="outlet" type="text" value={outlet} onChange={(e) => setOutlet(e.target.value)} disabled={isLoading} required placeholder="The Guardian" className={inputCls} />
         </div>
       </div>
 
       <div className="flex flex-col gap-1.5">
-        <label htmlFor="pitch" className="text-xs text-white/40 tracking-widest uppercase">Pitch</label>
+        <label htmlFor="pitch" className="text-xs text-muted-foreground tracking-widest uppercase">Pitch</label>
         <textarea
           id="pitch"
           value={pitch}
@@ -64,20 +64,20 @@ export function AnalysisForm({ onResult, onError }: Props) {
           required
           rows={7}
           placeholder="Paste your pitch here…"
-          className="w-full rounded-md border border-white/12 bg-white/[0.04] px-3 py-2.5 text-sm text-foreground placeholder:text-white/25 focus-visible:outline-none focus-visible:border-white/30 focus-visible:bg-white/[0.06] resize-y disabled:opacity-40 transition-all"
+          className="w-full rounded-md border border-input bg-card px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring resize-y disabled:opacity-40 transition-all"
         />
       </div>
 
       <div className="flex items-center justify-between">
-        {isLoading && <span className="text-xs text-white/40 animate-pulse">Researching journalist…</span>}
+        {isLoading && <span className="text-xs text-muted-foreground animate-pulse">Researching journalist…</span>}
         <button
           type="submit"
           disabled={!canSubmit}
-          className="ml-auto inline-flex items-center gap-2 rounded-md bg-white text-black text-sm font-semibold px-5 py-2.5 hover:bg-white/90 disabled:opacity-30 disabled:cursor-not-allowed transition-opacity"
+          className="ml-auto inline-flex items-center gap-2 rounded-md bg-primary text-primary-foreground text-sm font-semibold px-5 py-2.5 hover:bg-primary/90 disabled:opacity-30 disabled:cursor-not-allowed transition-opacity"
         >
           {isLoading ? (
             <>
-              <span className="h-3.5 w-3.5 border-2 border-black/20 border-t-black rounded-full animate-spin" />
+              <span className="h-3.5 w-3.5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
               Analyzing
             </>
           ) : "Analyze →"}
