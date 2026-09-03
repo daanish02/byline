@@ -27,7 +27,7 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-zinc-50">
+    <main className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50/40 to-indigo-50/60">
       <div className="max-w-4xl mx-auto px-6 py-14 flex flex-col gap-10">
 
         {/* Header */}
