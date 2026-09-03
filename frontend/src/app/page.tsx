@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnalysisForm } from "@/features/analysis/components/AnalysisForm";
 import { CoverageCard } from "@/features/analysis/components/CoverageCard";
 import { ScoreCard } from "@/features/analysis/components/ScoreCard";
@@ -17,14 +17,14 @@ type State =
 
 export default function HomePage() {
   const [state, setState] = useState<State>({ status: "idle" });
-  const [startTime, setStartTime] = useState<number | null>(null);
+  const startRef = useRef<number | null>(null);
 
   function handleStart() {
-    setStartTime(Date.now());
+    startRef.current = Date.now();
   }
 
   function handleResult(data: AnalyzeResponse) {
-    const elapsedMs = startTime ? Date.now() - startTime : 0;
+    const elapsedMs = startRef.current ? Date.now() - startRef.current : 0;
     setState({ status: "results", data, elapsedMs });
   }
 
@@ -47,12 +47,13 @@ export default function HomePage() {
 
         {state.status === "results" && (
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <div className="flex-1 border-t border-border" />
               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Analysis</span>
-              <span className="text-xs text-muted-foreground tabular-nums">
-                {(state.elapsedMs / 1000).toFixed(1)}s
-              </span>
+              <span className="text-xs text-muted-foreground">·</span>
+              <span className="text-xs text-muted-foreground tabular-nums">{(state.elapsedMs / 1000).toFixed(1)}s</span>
+              <span className="text-xs text-muted-foreground">·</span>
+              <span className="text-xs text-muted-foreground tabular-nums">{state.data.articleCount} article{state.data.articleCount === 1 ? "" : "s"} found</span>
               <div className="flex-1 border-t border-border" />
             </div>
 
