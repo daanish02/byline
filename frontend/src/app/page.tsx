@@ -30,19 +30,15 @@ export default function HomePage() {
     <main className="min-h-screen bg-background">
       <div className="max-w-2xl mx-auto px-8 py-20 flex flex-col gap-12">
 
-        {/* Header */}
-        <header className="flex flex-col gap-2 border-b border-white/10 pb-8">
-          <h1 className="text-2xl font-bold tracking-tight text-white">Byline</h1>
+        <header className="flex flex-col gap-2 border-b border-border pb-8">
+          <h1 className="text-2xl font-bold tracking-tight text-foreground">Byline</h1>
           <p className="text-sm text-muted-foreground">Know your journalist before you pitch.</p>
         </header>
 
-        {/* Form */}
         <AnalysisForm onResult={handleResult} onError={handleError} />
 
-        {/* Error */}
         {state.status === "error" && <ErrorBanner message={state.message} />}
 
-        {/* Results */}
         {state.status === "results" && (
           <div className="flex flex-col gap-8">
             {state.data.lowConfidence && (

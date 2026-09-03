@@ -10,8 +10,8 @@ export function ScoreCard({ score, scoreReasoning }: Props) {
   const { label, color, bar } = scoreLabel(score);
 
   return (
-    <div className="rounded-lg border border-white/10 bg-white/[0.03] flex flex-col">
-      <div className="px-4 py-3 border-b border-white/10">
+    <div className="rounded-lg border border-border bg-card flex flex-col">
+      <div className="px-4 py-3 border-b border-border">
         <span className="text-sm font-semibold">Fit Score</span>
       </div>
       <div className="p-5 flex flex-col gap-4 flex-1">
