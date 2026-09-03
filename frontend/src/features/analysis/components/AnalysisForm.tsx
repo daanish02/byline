@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { AnalyzeResponse } from "@/features/analysis/schema";
 
 type Props = {
+  onStart: () => void;
   onResult: (result: AnalyzeResponse) => void;
   onError: (message: string) => void;
 };
@@ -49,7 +50,7 @@ const PRESETS = [
 const inputCls =
   "h-10 w-full rounded-md border border-input bg-card px-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:border-ring disabled:opacity-40 transition-all";
 
-export function AnalysisForm({ onResult, onError }: Props) {
+export function AnalysisForm({ onStart, onResult, onError }: Props) {
   const [journalist, setJournalist] = useState("");
   const [outlet, setOutlet] = useState("");
   const [pitch, setPitch] = useState("");
@@ -67,6 +68,7 @@ export function AnalysisForm({ onResult, onError }: Props) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setIsLoading(true);
+    onStart();
     try {
       const response = await fetch("/api/analyze", {
         method: "POST",
