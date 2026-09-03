@@ -14,7 +14,7 @@ export function RewriteCard({ rewrite }: Props) {
   }
 
   return (
-    <div className="rounded-xl border bg-card shadow-sm flex flex-col">
+    <div className="rounded-xl border border-white/10 bg-white/[0.04] shadow-lg shadow-black/20 flex flex-col">
       <div className="flex items-center justify-between px-5 py-4 border-b">
         <span className="text-sm font-semibold">Rewritten Pitch</span>
         <button
