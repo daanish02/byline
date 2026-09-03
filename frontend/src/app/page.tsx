@@ -28,7 +28,7 @@ export default function HomePage() {
 
   return (
     <main className="min-h-screen bg-background">
-      <div className="max-w-2xl mx-auto px-8 py-20 flex flex-col gap-12">
+      <div className="max-w-4xl mx-auto px-10 py-16 flex flex-col gap-12">
 
         <header className="flex flex-col gap-2 border-b border-border pb-8">
           <h1 className="text-2xl font-bold tracking-tight text-foreground">Byline</h1>
@@ -44,7 +44,7 @@ export default function HomePage() {
             {state.data.lowConfidence && (
               <LowConfidenceWarning articleCount={state.data.articleCount} />
             )}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-5">
               <CoverageCard profile={state.data.profile} />
               <ScoreCard score={state.data.score} scoreReasoning={state.data.scoreReasoning} />
               <RewriteCard rewrite={state.data.rewrite} />

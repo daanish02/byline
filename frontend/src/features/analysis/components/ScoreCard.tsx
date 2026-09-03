@@ -11,10 +11,10 @@ export function ScoreCard({ score, scoreReasoning }: Props) {
 
   return (
     <div className="rounded-lg border border-border bg-card flex flex-col">
-      <div className="px-4 py-3 border-b border-border">
+      <div className="px-5 py-4 border-b border-border">
         <span className="text-sm font-semibold">Fit Score</span>
       </div>
-      <div className="p-5 flex flex-col gap-4 flex-1">
+      <div className="p-6 flex flex-col gap-4 flex-1">
         <div className="flex items-end gap-3">
           <span className={`text-6xl font-black tabular-nums leading-none ${color}`}>{score}</span>
           <div className="flex flex-col mb-1 gap-0.5">

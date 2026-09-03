@@ -15,7 +15,7 @@ export function CoverageCard({ profile }: Props) {
 
   return (
     <div className="rounded-lg border border-border bg-card flex flex-col">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-border">
         <span className="text-sm font-semibold">Coverage Profile</span>
         <button
           onClick={copy}
@@ -24,7 +24,7 @@ export function CoverageCard({ profile }: Props) {
           {copied ? "Copied ✓" : "Copy"}
         </button>
       </div>
-      <div className="p-5 flex-1">
+      <div className="p-6 flex-1">
         <p className="text-sm leading-relaxed text-muted-foreground">{profile}</p>
       </div>
     </div>

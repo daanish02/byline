@@ -16,7 +16,7 @@ export function OpeningLineCard({ openingLine }: Props) {
 
   return (
     <div className="rounded-lg border border-border bg-card flex flex-col">
-      <div className="flex items-center justify-between px-4 py-3 border-b border-border">
+      <div className="flex items-center justify-between px-5 py-4 border-b border-border">
         <span className="text-sm font-semibold">Opening Line</span>
         {openingLine && (
           <button
@@ -27,7 +27,7 @@ export function OpeningLineCard({ openingLine }: Props) {
           </button>
         )}
       </div>
-      <div className="p-5 flex-1">
+      <div className="p-6 flex-1">
         {openingLine ? (
           <blockquote className="border-l-2 border-primary pl-4 text-sm italic leading-relaxed text-muted-foreground">
             {openingLine}

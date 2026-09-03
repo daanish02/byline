@@ -30,6 +30,20 @@ const PRESETS = [
     pitch:
       "A new peer-reviewed study we funded found that GLP-1 drugs reduce alcohol cravings by 38% in patients who weren't prescribed them for that purpose. We're a biotech working on the next generation of addiction treatments and think this warrants broader public attention. Our chief medical officer is available for comment.",
   },
+  {
+    label: "Cade Metz · NYT",
+    journalist: "Cade Metz",
+    outlet: "New York Times",
+    pitch:
+      "We're releasing research showing that the top five frontier AI labs have all quietly rolled back safety evaluations they publicly committed to in 2023. We tracked policy documents, hiring records, and internal job postings to build the case. Our lead researcher is available for an on-record interview and we have supporting documents we can share under embargo.",
+  },
+  {
+    label: "Ryan Mac · NYT",
+    journalist: "Ryan Mac",
+    outlet: "New York Times",
+    pitch:
+      "We've documented 14 cases where Meta's content moderation contractors were instructed to approve political advertising that violated the platform's own stated policies — all in the six weeks before a national election. We have internal Slack messages and contractor testimonies. We're offering an exclusive before we publish independently.",
+  },
 ] as const;
 
 const inputCls =
