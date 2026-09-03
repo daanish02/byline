@@ -27,32 +27,30 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col gap-10">
+    <main className="min-h-screen bg-zinc-50">
+      <div className="max-w-4xl mx-auto px-6 py-14 flex flex-col gap-10">
 
         {/* Header */}
-        <header className="flex flex-col gap-1">
-          <div className="flex items-baseline gap-2">
-            <h1 className="text-2xl font-bold tracking-tight">Byline</h1>
-            <span className="text-sm text-muted-foreground">Know your journalist before you pitch.</span>
-          </div>
+        <header>
+          <h1 className="text-4xl font-black tracking-tight">Byline</h1>
+          <p className="text-sm text-muted-foreground mt-1.5">Know your journalist before you pitch.</p>
         </header>
 
         {/* Form */}
-        <section className="rounded-xl border bg-card p-6 shadow-xs">
+        <div className="rounded-xl border bg-card shadow-sm p-6">
           <AnalysisForm onResult={handleResult} onError={handleError} />
-        </section>
+        </div>
 
         {/* Error */}
         {state.status === "error" && <ErrorBanner message={state.message} />}
 
         {/* Results */}
         {state.status === "results" && (
-          <section className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             <div className="flex items-center gap-3">
-              <hr className="flex-1 border-border" />
-              <span className="text-xs text-muted-foreground uppercase tracking-wide">Analysis</span>
-              <hr className="flex-1 border-border" />
+              <div className="flex-1 border-t border-border" />
+              <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Analysis</span>
+              <div className="flex-1 border-t border-border" />
             </div>
 
             {state.data.lowConfidence && (
@@ -65,7 +63,7 @@ export default function HomePage() {
               <RewriteCard rewrite={state.data.rewrite} />
               <OpeningLineCard openingLine={state.data.openingLine} />
             </div>
-          </section>
+          </div>
         )}
 
       </div>

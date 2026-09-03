@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 type Props = { openingLine: string | null };
 
@@ -16,23 +15,21 @@ export function OpeningLineCard({ openingLine }: Props) {
   }
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="flex-row items-center justify-between pb-2">
-        <CardTitle className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Opening Line
-        </CardTitle>
+    <div className="rounded-xl border bg-card shadow-sm flex flex-col">
+      <div className="flex items-center justify-between px-5 py-4 border-b">
+        <span className="text-sm font-semibold">Opening Line</span>
         {openingLine && (
           <button
             onClick={copy}
-            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+            className="text-xs border border-input rounded-md px-2.5 py-1 text-muted-foreground hover:text-foreground hover:bg-muted/60 transition-colors"
           >
-            {copied ? "Copied" : "Copy"}
+            {copied ? "Copied ✓" : "Copy"}
           </button>
         )}
-      </CardHeader>
-      <CardContent>
+      </div>
+      <div className="p-5 flex-1">
         {openingLine ? (
-          <blockquote className="border-l-2 border-primary pl-3 text-sm italic leading-relaxed">
+          <blockquote className="border-l-2 border-primary pl-4 text-sm italic leading-relaxed text-muted-foreground">
             {openingLine}
           </blockquote>
         ) : (
@@ -40,7 +37,7 @@ export function OpeningLineCard({ openingLine }: Props) {
             No articles found — opening line unavailable.
           </p>
         )}
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

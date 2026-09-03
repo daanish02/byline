@@ -1,5 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 type Props = { score: number; scoreReasoning: string };
 
 function scoreLabel(score: number): { label: string; color: string; bar: string } {
@@ -12,26 +10,23 @@ export function ScoreCard({ score, scoreReasoning }: Props) {
   const { label, color, bar } = scoreLabel(score);
 
   return (
-    <Card className="flex flex-col">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-          Fit Score
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="flex flex-col gap-3">
+    <div className="rounded-xl border bg-card shadow-sm flex flex-col">
+      <div className="px-5 py-4 border-b">
+        <span className="text-sm font-semibold">Fit Score</span>
+      </div>
+      <div className="p-5 flex flex-col gap-4 flex-1">
         <div className="flex items-end gap-3">
-          <span className={`text-5xl font-bold tabular-nums leading-none ${color}`}>{score}</span>
-          <span className="text-lg text-muted-foreground mb-0.5">/100</span>
-          <span className={`text-sm font-medium mb-1 ${color}`}>{label}</span>
+          <span className={`text-6xl font-black tabular-nums leading-none ${color}`}>{score}</span>
+          <div className="flex flex-col mb-1 gap-0.5">
+            <span className="text-xs text-muted-foreground leading-none">/100</span>
+            <span className={`text-sm font-semibold leading-none ${color}`}>{label}</span>
+          </div>
         </div>
-        <div className="h-1.5 w-full rounded-full bg-muted overflow-hidden">
-          <div
-            className={`h-full rounded-full transition-all ${bar}`}
-            style={{ width: `${score}%` }}
-          />
+        <div className="h-2 w-full rounded-full bg-muted overflow-hidden">
+          <div className={`h-full rounded-full transition-all duration-500 ${bar}`} style={{ width: `${score}%` }} />
         </div>
-        <p className="text-sm text-muted-foreground leading-relaxed">{scoreReasoning}</p>
-      </CardContent>
-    </Card>
+        <p className="text-sm leading-relaxed text-muted-foreground">{scoreReasoning}</p>
+      </div>
+    </div>
   );
 }
