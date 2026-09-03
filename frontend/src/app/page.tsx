@@ -27,30 +27,47 @@ export default function HomePage() {
   }
 
   return (
-    <main className="min-h-screen bg-gray-50 py-12 px-6">
-      <div className="max-w-4xl mx-auto flex flex-col gap-10">
+    <main className="min-h-screen bg-background">
+      <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col gap-10">
+
+        {/* Header */}
         <header className="flex flex-col gap-1">
-          <h1 className="text-2xl font-bold text-gray-900">Byline</h1>
-          <p className="text-sm text-gray-500">Know your journalist before you pitch.</p>
+          <div className="flex items-baseline gap-2">
+            <h1 className="text-2xl font-bold tracking-tight">Byline</h1>
+            <span className="text-sm text-muted-foreground">Know your journalist before you pitch.</span>
+          </div>
         </header>
 
-        <AnalysisForm onResult={handleResult} onError={handleError} />
+        {/* Form */}
+        <section className="rounded-xl border bg-card p-6 shadow-xs">
+          <AnalysisForm onResult={handleResult} onError={handleError} />
+        </section>
 
+        {/* Error */}
         {state.status === "error" && <ErrorBanner message={state.message} />}
 
+        {/* Results */}
         {state.status === "results" && (
-          <div className="flex flex-col gap-4">
+          <section className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <hr className="flex-1 border-border" />
+              <span className="text-xs text-muted-foreground uppercase tracking-wide">Analysis</span>
+              <hr className="flex-1 border-border" />
+            </div>
+
             {state.data.lowConfidence && (
               <LowConfidenceWarning articleCount={state.data.articleCount} />
             )}
+
             <div className="grid grid-cols-2 gap-4">
               <CoverageCard profile={state.data.profile} />
               <ScoreCard score={state.data.score} scoreReasoning={state.data.scoreReasoning} />
               <RewriteCard rewrite={state.data.rewrite} />
               <OpeningLineCard openingLine={state.data.openingLine} />
             </div>
-          </div>
+          </section>
         )}
+
       </div>
     </main>
   );
